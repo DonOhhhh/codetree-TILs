@@ -10,7 +10,7 @@ let ans = 0;
 
 for (let i = 0; i < n; i++) {
     const diff = Math.abs(k - nums[i])
-    if (counted[diff]) ans += counted[diff] - 1;
+    if (counted[diff]) ans += counted[diff] > 1 ? counted[diff] - 1 : counted[diff];
 }
 
 
