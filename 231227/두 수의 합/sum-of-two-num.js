@@ -10,8 +10,8 @@ let ans = 0;
 
 for (let i = 0; i < n; i++) {
     const diff = Math.abs(k - nums[i])
-    counted[diff] && ans++;
+    if (counted[diff]) ans += counted[diff] - 1;
 }
 
 
-console.log(+(ans / 2))
+console.log(parseInt(ans / 2))
