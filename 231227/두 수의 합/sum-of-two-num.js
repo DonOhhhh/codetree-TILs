@@ -1,12 +1,17 @@
 const [[n, k], nums] = `${require("fs").readFileSync(0)}`.trim().split`
 `.map(e => e.trim().split` `.map(Number))
 
-const HashMap = {}
-
-for (let i = 0; i < n; i++) {
-    for (let j = i + 1; j < n; j++) {
-        HashMap[nums[i] + nums[j]] = (HashMap[nums[i] + nums[j]] || 0) + 1
-    }
+function Counter(arr) {
+    arr.forEach(e => this[e] = (this[e] || 0) + 1)
 }
 
-console.log(HashMap[k])
+const counted = new Counter(nums)
+let ans = 0;
+
+for (let i = 0; i < n; i++) {
+    const diff = Math.abs(k - nums[i])
+    counted[diff] && ans++;
+}
+
+
+console.log(+(ans / 2))
