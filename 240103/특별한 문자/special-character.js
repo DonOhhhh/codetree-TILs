@@ -4,4 +4,4 @@ function Counter(arr) {
 }
 
 const counted = Object.entries(new Counter(str)).filter(([_, v]) => v === 1)
-console.log(counted[0][0])
+console.log(counted.length ? counted[0][0] : 'None')
