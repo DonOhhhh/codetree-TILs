@@ -5,12 +5,13 @@ function Counter(arr) {
     arr.forEach(e => this[e] = (this[e] || 0) + 1)
 }
 
-const counted = new Counter(nums)
+const counted = {}
 let ans = 0;
 
 for (const num of nums) {
     const diff = k - num;
     ans += (counted[diff] || 0)
+    counted[num] = (counted[num] || 0) + 1
 }
 
-console.log(parseInt(ans / 2))
+console.log(ans)
