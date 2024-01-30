@@ -9,12 +9,15 @@ for (let i = 1; i <= n; i++) {
     seats_cnt[i][i] = 1;
 }
 
-for (let _ = 0; _ < k - 1; _++) {
-    for (const [a, b] of inputs) {
-        [seats_info[a - 1], seats_info[b - 1]] = [seats_info[b - 1], seats_info[a - 1]]
-        seats_cnt[seats_info[a - 1]][b]++;
-        seats_cnt[seats_info[b - 1]][a]++;
-    }
+let minute = 0;
+
+while (minute <= 3 * k) {
+    const [a, b] = inputs[minute % k];
+    seats_cnt[seats_info[a - 1]][b]++;
+    seats_cnt[seats_info[b - 1]][a]++;
+    [seats_info[a - 1], seats_info[b - 1]] = [seats_info[b - 1], seats_info[a - 1]];
+    minute++;
+    // console.log({ seats_info })
 }
 
 // console.log({ seats_cnt })
